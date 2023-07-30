@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/logreg.css') }}">
+  <title>РУГИПП РЕГИСТРИ</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/registration">
+            <section>
+                <div class="form-box1">
+                    <div>
+                    
+                            <h2>РЕГИСТРАЦИЈА</h2>
+                            <div class="inputbox">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <input type="text" name="firstname" required>
+                                <label for="firstname">Име</label>
+                            </div>
+                            <div class="inputbox">
+                                <ion-icon name="people-outline"></ion-icon>
+                                <input type="text" name="lastname" required>
+                                <label for="lastname">Презиме</label>
+                            </div>
+                            <div class="inputbox">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <input type="text" name="username" required>
+                                <label for="username">Корисничко име</label>
+                            </div>
+
+                            <div class="inputbox">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <input type="email" name="email" required>
+                                <label for="">Email</label>
+                            </div>
+                            
+                            <div class="inputbox">
+                                <ion-icon name="lock-open-outline"></ion-icon>
+                                <input type="password" name="password" required>
+                                <label for="password">Лозинка</label>
+                            </div>
+                            <div class="inputbox">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                                <input type="password" name="passwordConfirm" required>
+                                <label for="password">Потврди лозинку</label>
+                            </div>
+                            <button type="submit">Региструј се</button>
+                            <div class="register">
+                                <p>Посједујете налог <a href="/login">Пријава</a></p>
+                            </div>
+                        
+                    </div>
+                </div>
+            </section>
+        </form>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

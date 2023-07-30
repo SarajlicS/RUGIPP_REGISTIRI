@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div>
+  <div>
+    
+    <div>
+      <h2><center>{{ geod[2] }} {{ geod[3] }}</center></h2>
+    </div>
+    <div>
+      <a href="/uredi/{{geod.0}}" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modaledit{{geod.0}}">Измјени податке</a>
+      <a href="/brisi/{{geod.0}}" class="btn btn-danger" onclick="return confirm('Да ли сте сигурни да желите да обришете геодету?')">Обриши геодету</a>
+    </div>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th scope="col">JMBG</th>
+      <th scope="col">Име</th>
+      <th scope="col">Презиме</th>
+      <th scope="col">Стручна Спрема</th>
+      <th scope="col">Број Стручног</th>
+    </tr>
+    <tr>
+        <td>{{ geod[1] }}</td>
+        <td>{{ geod[2] }}</td>
+        <td>{{ geod[3] }}</td>
+        <td>{{ geod[4] }}</td>
+        <td>{{ geod[5] }}</td>
+    </tr>
+  </table>
+</div>
+
+<div id="modaledit{{geod.0}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+     <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Ажурирај геодету</h4>
+        </div>
+
+        <div class="modal-body">
+            <form action="{{ url_for('uredi') }}" method="POST">
+                <div class="col">
+                    <label>Име:</label>
+                    <input type="hidden"  name="id" value="{{geod.0}}">
+                    <input type="text" class="form-control" name="name" value="{{geod.2}}">
+                </div>
+                <div class="col">
+                  <label>Презиме:</label>
+                  <input type="text" class="form-control" name="lastname" value="{{geod.3}}">
+                </div>
+                <div class="col">
+                  <label>ЈМБГ:</label>
+                  <input type="text" class="form-control" name="jmbg" value="{{geod.1}}">
+                </div>    
+                <div class="form-group">
+                    <label>Број стручног испита:</label>
+                    <input type="text" class="form-control" name="brstrucnog" value="{{geod.5}}">   
+                </div>
+                <div class="form-group">
+                  <label>Стручна спрема:</label>
+                  <select class="form-select" name="ssprema" aria-label="Селектуј стручну спрему геодете" value="{{geod.4}}">
+                  <option selected>{{geod.4}}</options>
+                  <option value="ССС">Средња стручна спрема (ССС)</option>
+                  <option value="ВСС">Висока стручна спрема (ВСС)</option>
+                </select>
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary btn-block">Сачувај</button>
+                </div>            
+            </form>
+        </div>
+
+        <div class="modal-footer">
+        </div>
+
+
+     </div>
+  </div>
+</div>
+
+{% endblock %}

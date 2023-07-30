@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div>
+<h3><center>Унесите податке o новом инструменту</center></h3>
+
+    <form method="POST" action="/instrument">
+
+        <div class="col">
+            <select class="form-select" name="tip_inst" aria-label="Селектуј тип инструмента">
+              <option selected>Селектуј тип инструмента</option>
+              <option value="ГНСС">ГНСС</option>
+              <option value="ТС">Тотална станица</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <input type="text" class="form-control" name="proizvodjac" placeholder="Проивођач инструмента">
+        </div>
+
+        <div class="col">
+            <input type="text" class="form-control" name="serbroj" placeholder="Серијски број инструмента">
+        </div>
+
+        <div class="col">
+        <input type="text" class="form-control" name="datum" placeholder="Датум до када важи еталонирање иснтрумента у формату YYYY-MM-DD">
+        </div>
+        
+        <div class="col">
+            <input type="text" class="form-control" name="vlasnik" placeholder="Унеси ЈИБ фирме која је власник инструмента">
+        </div>
+
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-block">Сачувај</button>
+        </div>
+    </form>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+               </ul>
+             {% endif %}
+           {% endwith %}
+</div>
+
+{% endblock %}

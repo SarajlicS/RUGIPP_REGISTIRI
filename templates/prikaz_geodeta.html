@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block page_content %}
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='images/geodete.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+<div>
+  {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+  <h2 style="color: rgb(255, 255, 255);"><center>ДОБРО ДОШЛИ У РУГИПП РЕГИСТРЕ - ГЕОДЕТЕ</center></h2>
+
+  <div>
+    <a href="/geodet" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Додај геодету</a>
+  </div>
+
+  <table class="table">
+      <tr>
+        <th scope="col">JMBG</th>
+        <th scope="col">Име</th>
+        <th scope="col">Презиме</th>
+        <th scope="col">Стручна Спрема</th>
+        <th scope="col">Број Стручног</th>
+        <th scope="col">Детаљно</th>
+      </tr>
+    {% for reg_geo in podaci %}
+    <tr>
+        <td>{{ reg_geo[1] }}</td>
+        <td>{{ reg_geo[2] }}</td>
+        <td>{{ reg_geo[3] }}</td>
+        <td>{{ reg_geo[4] }}</td>
+        <td>{{ reg_geo[5] }}</td>
+        <td><a href="{{ url_for('geo', id=reg_geo[0]) }}" class="btn btn-dark">Детаљи</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+{% endblock %}

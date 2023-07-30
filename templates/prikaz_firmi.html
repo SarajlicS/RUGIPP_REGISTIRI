@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block page_content %}
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='images/organizacije.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+<div>
+  {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+  <h2 ><center>ДОБРО ДОШЛИ У РУГИПП РЕГИСТРЕ - ОРГАНИЗАЦИЈЕ</center></h2>
+
+  <div>
+    <a href="/organizacija" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Додај фирму</a>
+  </div>
+
+  <table class="table">
+      <tr>
+        <th scope="col">JИБ</th>
+        <th scope="col">Назив фирме</th>
+        <th scope="col">Адреса</th>
+        <th scope="col">Број телефона</th>
+      </tr>
+    {% for firma in firme %}
+    <tr>
+        <td>{{ firma[1] }}</td>
+        <td>{{ firma[2] }}</td>
+        <td>{{ firma[3] }}</td>
+        <td>{{ firma[4] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+{% endblock %}

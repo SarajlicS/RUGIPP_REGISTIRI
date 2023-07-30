@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/logreg.css') }}">
+  <title>РУГИПП РЕГИСТРИ</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/login">
+            <section>
+                <div class="form-box">
+                    <div>
+                    
+                            <h2>РУГИПП РЕГИСТРИ</h2>
+                            <div class="inputbox">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                                <input type="text" name="username" required>
+                                <label for="username">Корисничко име</label>
+                            </div>
+                            <div class="inputbox">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                                <input type="password" name="password" required>
+                                <label for="password">Лозинка</label>
+                            </div>
+                            <div class="forget">
+                                <label for=""><input type="checkbox">Запамти ме </label>
+                            
+                            </div>
+                            <button type="submit">Пријава</button>
+                            <div class="register">
+                                <p>Немате налог <a href="/registration">Региструјте се</a></p>
+                            </div>
+                        
+                    </div>
+                </div>
+            </section>
+        </form>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

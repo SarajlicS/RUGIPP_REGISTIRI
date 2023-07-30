@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+<style>
+    body {
+      background-image: url("{{ url_for('static', filename='images/pocetna.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+
+<div>
+  <h1 style="color: rgb(255, 255, 255);"><center>ДОБРО ДОШЛИ У РУГИПП РЕГИСТРЕ</center></h1>
+</div>
+{% endblock %}

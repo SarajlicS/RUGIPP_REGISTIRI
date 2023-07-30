@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div>
+<h3><center>Унесите податке o новој фирми</center></h3>
+
+    <form method="POST" action="/organizacija">
+
+        <div class="col">
+            <input type="text" class="form-control" name="nfirme" placeholder="Назив фирме">
+        
+
+        <div class="col">
+            <input type="text" class="form-control" name="jib" placeholder="ЈИБ">
+        </div>
+        </div>
+        <div class="col">
+        <input type="text" class="form-control" name="ulica" placeholder="Улица">
+        <input type="text" class="form-control" name="broj" placeholder="Број">
+        <input type="text" class="form-control" name="grad" placeholder="Град/Општина">
+        </div>
+        
+        <div class="col">
+            <input type="text" class="form-control" name="tel" placeholder="Број телефона">
+        </div>
+
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-block">Сачувај</button>
+        </div>
+    </form>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+               </ul>
+             {% endif %}
+           {% endwith %}
+</div>
+
+{% endblock %}

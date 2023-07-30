@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div>
+<h3><center>Унесите податке o новом геодети</center></h3>
+
+  <form method="POST" action="/geodet">
+
+      <div class="col">
+          <input type="text" class="form-control" name="name" placeholder="Име">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="lastname" placeholder="Презиме">
+      </div>
+
+      <div class="col">
+        <input type="text" class="form-control" name="jmbg" placeholder="ЈМБГ">
+      </div>
+      <div class="col">
+        <select class="form-select" name="ssprema" aria-label="Селектуј стручну спрему геодете">
+          <option selected>Селектуј стручну спрему геодете</option>
+          <option value="ССС">Средња стручна спрема (ССС)</option>
+          <option value="ВСС">Висока стручна спрема (ВСС)</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" name="brstrucnog" placeholder="Број Стручног испита">
+      </div>
+      <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary btn-block">Сачувај</button>
+      </div>
+  </form>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                 <li>{{ message }}</li>
+               {% endfor %}
+               </ul>
+             {% endif %}
+           {% endwith %}
+</div>
+
+{% endblock %}

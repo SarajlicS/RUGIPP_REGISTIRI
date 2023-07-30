@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block page_content %}
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='images/instrumenti.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .transparent-div {
+  background-color: rgba(241, 241, 241, 0.5); /* R, G, B komponente boje + prozirnost */
+}
+</style>
+<div class="transparent-div">
+  {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+  <h2><center>ДОБРО ДОШЛИ У РУГИПП РЕГИСТРЕ - ИНСТРУМЕНТИ</center></h2>
+
+  <div>
+    <a href="/instrument" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Додај инструмент</a>
+  </div>
+
+  <table class="table">
+      <tr>
+        <th scope="col">Тип инструмента</th>
+        <th scope="col">Произвођач</th>
+        <th scope="col">Сериски број</th>
+        <th scope="col">Еталониран до</th>
+        <th scope="col">ЈИБ власника инструмента</th>
+      </tr>
+    {% for ins in inst %}
+    <tr>
+        <td>{{ ins[2] }}</td>
+        <td>{{ ins[3] }}</td>
+        <td>{{ ins[1] }}</td>
+        <td>{{ ins[4] }}</td>
+        <td>{{ ins[5] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+{% endblock %}
