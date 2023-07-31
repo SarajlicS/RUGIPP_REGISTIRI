@@ -1,4 +1,4 @@
-# RUGIPP REGISTIRI - FLASK APP
+# RUGIPP REGISTRI - FLASK APP
 
 ## Kreiramo **venv**
     python -m venv venv
